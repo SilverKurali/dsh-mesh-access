@@ -1,8 +1,8 @@
 url: https://github.com/SilverKurali/dsh-phone-tunnel
 name: SilverKurali/dsh-phone-tunnel
-category: network
+category: remote
 description:
-  en: 'Expose the running DSH web UI on a mesh/VPN interface from inside the server: an in-process reverse proxy plus a panel with status, one-click port open and the phone URL. One instance, one session list, no second dsh and no SSH.'
-  zh: '在服务进程内部把 DSH 网页界面挂到组网网卡（星空组网/Tailscale/WireGuard）上：进程内反代 + 面板显示状态、一键开端口、手机地址。单实例、单份会话列表，不用第二个 dsh，也不用 SSH。'
+  en: 'Opens a port on the mesh/VPN interface from inside the running DSH process: the phone reaches the same web UI you are using, through one instance, with no second dsh and no SSH.'
+  zh: '在正在运行的 DSH 进程内部把端口开到组网网卡上：手机访问的就是你正在用的那个 Web 界面，单实例、单份会话列表，不用第二个 dsh，也不用 SSH。'
 icon: https://raw.githubusercontent.com/SilverKurali/dsh-phone-tunnel/main/assets/icon-180.png
-npm: dsh-phone-tunnel
+tarball: https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
