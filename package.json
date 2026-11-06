@@ -18,8 +18,9 @@
     "cordis.patch.yml",
     "icon.svg",
     "README.md",
-    "README.zh.md",
+    "README.en.md",
     "INSTALL.md",
+    "INSTALL.en.md",
     "CHANGELOG.md",
     "LICENSE",
     "docs"

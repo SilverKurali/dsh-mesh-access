@@ -1,12 +1,12 @@
-# Changelog
+# 更新日志
 
 ## 0.1.0 — 2026-11-07
 
-First release. Published to npm as `dsh-phone-tunnel@0.1.0`.
+第一个版本。已发布到 npm：`dsh-phone-tunnel@0.1.0`。
 
-- Host half: mesh interface discovery (`StarVPN`, `utun*`, `tap*`, `tun*`, `wg*`, `gpd*`, `ppp*`,
-  `ipsec*` on `192.168.*`), in-process reverse proxy with `Host` rewrite, WebSocket/upgrade
-  forwarding, `GET /api/dsh-phone-tunnel/status`, `POST /api/dsh-phone-tunnel/proxy`.
-- Client half: `sidebar.panellist` + `main` slot panel (status, start/stop, phone URL + copy,
-  first-run referral note), polling every 5 s.
-- No build step: both halves are plain ESM/browser JS, so the published package is the source.
+- **宿主半边**：组网网卡探测（`192.168.*` 上的 `StarVPN`、`utun*`、`tap*`、`tun*`、`wg*`、`gpd*`、
+  `ppp*`、`ipsec*`）、进程内反代并改写 `Host`、WebSocket / upgrade 转发、
+  `GET /api/dsh-phone-tunnel/status`、`POST /api/dsh-phone-tunnel/proxy`。
+- **客户端半边**：`sidebar.panellist` + `main` 两个槽位的面板（状态、开/关端口、手机地址与复制、
+  首次使用星空组网的提示），每 5 秒轮询一次。
+- **没有构建步骤**：两边都是普通的 ESM / 浏览器 JS，所以发布出去的包就是源码本身。
