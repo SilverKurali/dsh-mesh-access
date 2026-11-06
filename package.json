@@ -1,7 +1,7 @@
 {
   "name": "dsh-mesh-access",
-  "version": "1.0.1",
-  "description": "Expose the DSH web UI on a mesh/VPN interface (StarVPN, Tailscale, WireGuard tun) from inside the running server: in-process reverse proxy + status panel, so any device on the mesh — phone, laptop, NAS — opens it in a browser. No second instance.",
+  "version": "1.0.2",
+  "description": "Control your DSH from your phone: opens a port on the mesh/VPN interface from inside the running server process, so a phone browser gets the same instance and the same session list — no SSH, no second dsh. Also reachable from another PC, a GUI NAS, or a TV box.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

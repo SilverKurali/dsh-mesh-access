@@ -1,7 +1,11 @@
 # dsh-mesh-access
 
-Expose the **running** DeepSeek Harness web UI on a mesh/VPN interface — from inside the server,
-without a second instance, without SSH, without touching the router.
+**Control your DSH from your phone.** Open the address in a phone browser and you get the very
+same UI you are using on the desktop — same instance, same session list, same context. No SSH,
+no second `dsh`, no router to touch.
+
+Under the hood it mounts the running DeepSeek Harness web UI onto a mesh/VPN interface, from
+inside the server process.
 
 [English](#what-it-does) | [中文](README.md)
 
