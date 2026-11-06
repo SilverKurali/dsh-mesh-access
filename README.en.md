@@ -16,7 +16,7 @@ interface created *after* boot is not where it listens.
 This plugin adds a mesh port **inside the running process**:
 
 ```
-phone ──▶ 192.168.188.1:3081 ──▶ (plugin proxy) ──▶ 127.0.0.1:3080  (the same dsh you are using)
+any device ──▶ 192.168.188.1:3081 ──▶ (plugin proxy) ──▶ 127.0.0.1:3080  (the same dsh you are using)
 ```
 
 One instance. One session list. No `task-board ledger is already owned by …` warning, no
@@ -94,6 +94,16 @@ Corollary: change the mesh IP or the port and you must open a fresh token URL on
 - Still requires the phone to reach the mesh address — the tunnel's own quality applies. On
   StarVPN's relay path expect ~0.4 MB/s and occasional multi-second RTT spikes, which can stall a
   long streaming answer; reload resumes it.
+
+## Not just phones
+
+The name says phone, the mechanism says otherwise: the plugin forwards requests that arrive on a
+mesh address to the port this process already serves. Anything that can open a web page on the
+mesh works — a phone or tablet, another Windows/macOS/Linux laptop, a NAS with a GUI
+(Synology DSM, QNAP QTS, TrueNAS Scale), even a TV stick's browser.
+
+Requirements are only: same mesh, a route to the mesh IP, and a browser. **Nothing** has to be
+installed on the other device, and no SSH is involved.
 
 ## Companion
 
