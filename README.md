@@ -130,3 +130,30 @@ curl -s http://127.0.0.1:3080/api/dsh-mesh-access/status
 ## 许可
 
 MIT。
+
+## 常见问题
+
+**页面能打开、侧边栏也有，但底部一直「重新连接中…」，工作区列表空着**
+
+这是 1.0.0 的 bug，升级到 **1.0.1** 即可。原因：反代把 `Host` 改写成上游（`127.0.0.1:3080`）却没改 `Origin`，DSH 对 WebSocket 升级做同源校验，浏览器带着 `Origin: http://<组网IP>:<端口>` 过来，两边不一致 → 上游直接 `403 Forbidden`。于是普通 HTTP 全通（页面能开、API 能查），实时通道一次都没握上手，浏览器每几秒重试一次，看起来就像“网络一直断”。
+
+自查一行就够：
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' --http1.1 \
+  -H 'Connection: Upgrade' -H 'Upgrade: websocket' \
+  -H 'Sec-WebSocket-Version: 13' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' \
+  -H "Origin: http://<组网IP>:<端口>" \
+  -b <你浏览器的 cookie> \
+  http://<组网IP>:<端口>/api/remote.mux
+```
+
+`101` 是正常，`403` 就是中了这个 bug。
+
+**改了端口或组网 IP，面板上的地址还能用吗**
+
+不能。反代一开出来，监听地址和上游端口就固定了；「访问地址」里的 token 也是按当时的地址签的。换了就点「关闭」→「在组网地址上开端口」，重新复制地址。
+
+**组网里的设备打开地址却超时**
+
+先确认那台设备能路由到组网 IP（`ping <组网IP>`），再确认本机防火墙放行该端口。Linux 上 `firewall-cmd --zone=<组网域> --list-ports`，Windows 上查该端口的入站规则。
