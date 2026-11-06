@@ -1,7 +1,7 @@
-url: https://github.com/SilverKurali/dsh-plugin-mesh
-name: SilverKurali/dsh-plugin-mesh
+url: https://github.com/SilverKurali/dsh-phone-tunnel
+name: SilverKurali/dsh-phone-tunnel
 category: network
 description:
   en: 'Expose the running DSH web UI on a mesh/VPN interface from inside the server: an in-process reverse proxy plus a panel with status, one-click port open and the phone URL. One instance, one session list, no second dsh and no SSH.'
   zh: '在服务进程内部把 DSH 网页界面挂到组网网卡（星空组网/Tailscale/WireGuard）上：进程内反代 + 面板显示状态、一键开端口、手机地址。单实例、单份会话列表，不用第二个 dsh，也不用 SSH。'
-icon: https://raw.githubusercontent.com/SilverKurali/dsh-plugin-mesh/main/assets/icon-180.png
+icon: https://raw.githubusercontent.com/SilverKurali/dsh-phone-tunnel/main/assets/icon-180.png

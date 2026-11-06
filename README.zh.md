@@ -1,4 +1,4 @@
-# dsh-plugin-mesh
+# dsh-phone-tunnel
 
 把**正在运行**的 DeepSeek Harness 网页界面挂到组网网卡上——在服务进程内部完成，不需要第二个实例，
 不需要 SSH，也不碰路由器。
@@ -21,9 +21,9 @@
 ## 安装
 
 ```bash
-dsh plugin --profile web add dsh-plugin-mesh
+dsh plugin --profile web add dsh-phone-tunnel
 # 或者从本地目录装：
-dsh plugin --profile web add link:/绝对路径/dsh-plugin-mesh
+dsh plugin --profile web add link:/绝对路径/dsh-phone-tunnel
 ```
 
 重启 profile 后，左侧导航多出「组网访问」：
@@ -41,7 +41,7 @@ dsh plugin --profile web add link:/绝对路径/dsh-plugin-mesh
 
 ```yaml
 - id: mesh
-  name: dsh-plugin-mesh
+  name: dsh-phone-tunnel
   config:
     interfacePattern: '^(StarVPN|utun\d+|tap\d+|tun\d+|wg\d+|gpd\d+|ppp\d+|ipsec\d+)$'
     addressPrefix: '192.168.'

@@ -9,14 +9,14 @@
 ## From npm (once published)
 
 ```bash
-dsh plugin --profile web add dsh-plugin-mesh
+dsh plugin --profile web add dsh-phone-tunnel
 ```
 
 ## From a local checkout
 
 ```bash
-git clone https://github.com/SilverKurali/dsh-plugin-mesh
-dsh plugin --profile web add link:"$PWD/dsh-plugin-mesh"
+git clone https://github.com/SilverKurali/dsh-phone-tunnel
+dsh plugin --profile web add link:"$PWD/dsh-phone-tunnel"
 ```
 
 `link:` installs the directory itself; pnpm prints a peer-resolution warning that is expected for
@@ -25,17 +25,17 @@ link installs and harmless here (the plugin has no peer for `@deepseek-ai/dsh` b
 ## From a git URL
 
 ```bash
-dsh plugin --profile web add git+https://github.com/SilverKurali/dsh-plugin-mesh.git
+dsh plugin --profile web add git+https://github.com/SilverKurali/dsh-phone-tunnel.git
 ```
 
 ## Verify
 
 ```bash
 # 1. the profile now lists the plugin
-grep -n 'dsh-plugin-mesh' ~/.dsh/profiles/web/package.json
+grep -n 'dsh-phone-tunnel' ~/.dsh/profiles/web/package.json
 
 # 2. restart the profile, then ask the host directly
-curl -s http://127.0.0.1:3080/api/dsh-mesh/status | head -20
+curl -s http://127.0.0.1:3080/api/dsh-phone-tunnel/status | head -20
 ```
 
 A healthy answer looks like:
@@ -54,13 +54,13 @@ Then open the **组网访问** panel and press *在组网地址上开端口*, or
 ```bash
 curl -s -X POST -H 'content-type: application/json' \
      -d '{"action":"start","port":3081}' \
-     http://127.0.0.1:3080/api/dsh-mesh/proxy
+     http://127.0.0.1:3080/api/dsh-phone-tunnel/proxy
 ```
 
 ## Uninstall
 
 ```bash
-dsh plugin --profile web remove dsh-plugin-mesh
+dsh plugin --profile web remove dsh-phone-tunnel
 ```
 
 Nothing is written outside the profile directory and `~/.dsh`; there is no service, no autostart,

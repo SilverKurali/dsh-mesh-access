@@ -1,4 +1,4 @@
-# dsh-plugin-mesh
+# dsh-phone-tunnel
 
 Expose the **running** DeepSeek Harness web UI on a mesh/VPN interface — from inside the server,
 without a second instance, without SSH, without touching the router.
@@ -23,9 +23,9 @@ half-synced state between two servers.
 ## Install
 
 ```bash
-dsh plugin --profile web add dsh-plugin-mesh
+dsh plugin --profile web add dsh-phone-tunnel
 # or, from a checkout:
-dsh plugin --profile web add link:/absolute/path/to/dsh-plugin-mesh
+dsh plugin --profile web add link:/absolute/path/to/dsh-phone-tunnel
 ```
 
 Restart the profile. A **组网访问 / Mesh access** entry appears in the left rail:
@@ -42,11 +42,11 @@ Restart the profile. A **组网访问 / Mesh access** entry appears in the left 
 The panel is a view over two routes kept deliberately small:
 
 ```
-GET  /api/dsh-mesh/status     → { host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
-POST /api/dsh-mesh/proxy      → {action:'start'|'stop', port?}
+GET  /api/dsh-phone-tunnel/status     → { host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
+POST /api/dsh-phone-tunnel/proxy      → {action:'start'|'stop', port?}
 ```
 
-`curl -s localhost:3090/api/dsh-mesh/status` is enough to debug without a browser.
+`curl -s localhost:3090/api/dsh-phone-tunnel/status` is enough to debug without a browser.
 
 ## Configuration
 
@@ -54,7 +54,7 @@ Optional, written in the profile's patch layer; every key has a default:
 
 ```yaml
 - id: mesh
-  name: dsh-plugin-mesh
+  name: dsh-phone-tunnel
   config:
     interfacePattern: '^(StarVPN|utun\d+|tap\d+|tun\d+|wg\d+|gpd\d+|ppp\d+|ipsec\d+)$'
     addressPrefix: '192.168.'
