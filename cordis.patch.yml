@@ -1,8 +1,8 @@
-# dsh-phone-tunnel — bundle patch
+# dsh-mesh-access — bundle patch
 #
 # Mounts the mesh-access plugin into the web profile. Install with:
-#   dsh plugin --profile web add dsh-phone-tunnel
-#   dsh plugin --profile web add link:/absolute/path/to/dsh-phone-tunnel   # local dev
+#   dsh plugin --profile web add dsh-mesh-access
+#   dsh plugin --profile web add link:/absolute/path/to/dsh-mesh-access   # local dev
 - insert:
-    - id: mesh
-      name: dsh-phone-tunnel
+    - id: mesh-access
+      name: dsh-mesh-access

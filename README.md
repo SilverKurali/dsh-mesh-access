@@ -1,4 +1,4 @@
-# dsh-phone-tunnel
+# dsh-mesh-access
 
 把**正在运行**的 DeepSeek Harness 网页界面挂到组网网卡上 —— 在服务进程内部完成，
 不需要第二个实例，不需要 SSH，也不用碰路由器。
@@ -23,20 +23,20 @@
 ## 安装
 
 ```bash
-dsh plugin --profile web add dsh-phone-tunnel
+dsh plugin --profile web add dsh-mesh-access
 ```
 
 不方便用 npm，或者你的 npm 指向国内镜像？用 Release 里的 tgz：
 
 ```bash
 dsh plugin --profile web add \
-  https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
+  https://github.com/SilverKurali/dsh-mesh-access/releases/latest/download/dsh-mesh-access.tgz
 ```
 
 从本地目录装（改代码的人用这个）：
 
 ```bash
-dsh plugin --profile web add link:/绝对路径/dsh-phone-tunnel
+dsh plugin --profile web add link:/绝对路径/dsh-mesh-access
 ```
 
 完整的四种装法、验证步骤、卸载与故障表见 [INSTALL.md](INSTALL.md)。
@@ -55,14 +55,14 @@ dsh plugin --profile web add link:/绝对路径/dsh-phone-tunnel
 面板只是两个接口的外壳，故意做得极小：
 
 ```
-GET  /api/dsh-phone-tunnel/status   → { ok, host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
-POST /api/dsh-phone-tunnel/proxy    → { action:'start' | 'stop', port? }
+GET  /api/dsh-mesh-access/status   → { ok, host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
+POST /api/dsh-mesh-access/proxy    → { action:'start' | 'stop', port? }
 ```
 
 不开浏览器也能排查：
 
 ```bash
-curl -s http://127.0.0.1:3080/api/dsh-phone-tunnel/status
+curl -s http://127.0.0.1:3080/api/dsh-mesh-access/status
 ```
 
 ## 配置（可选）
@@ -71,7 +71,7 @@ curl -s http://127.0.0.1:3080/api/dsh-phone-tunnel/status
 
 ```yaml
 - id: mesh
-  name: dsh-phone-tunnel
+  name: dsh-mesh-access
   config:
     interfacePattern: '^(StarVPN|utun\d+|tap\d+|tun\d+|wg\d+|gpd\d+|ppp\d+|ipsec\d+)$'
     addressPrefix: '192.168.'

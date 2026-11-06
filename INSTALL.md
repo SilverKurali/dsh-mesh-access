@@ -11,10 +11,10 @@
 ## 一、从 npm 装（一条命令）
 
 ```bash
-dsh plugin --profile web add dsh-phone-tunnel
+dsh plugin --profile web add dsh-mesh-access
 ```
 
-最新版：`dsh-phone-tunnel@0.1.3`（2026-11-07 发布）。
+最新版：`dsh-mesh-access@0.1.3`（2026-11-07 发布）。
 
 > **国内镜像的坑**：如果你的 npm 指向 `registry.npmmirror.com`，镜像可能只同步了一半元数据，
 > pnpm 会报
@@ -22,21 +22,21 @@ dsh plugin --profile web add dsh-phone-tunnel
 > 这时显式给官方源：
 >
 > ```bash
-> dsh plugin --profile web add dsh-phone-tunnel@0.1.3 --registry=https://registry.npmjs.org
+> dsh plugin --profile web add dsh-mesh-access@0.1.3 --registry=https://registry.npmjs.org
 > ```
 
 ## 二、从 Release 的 tgz 装（不需要 npm 账号，任何镜像都行）
 
 ```bash
 dsh plugin --profile web add \
-  https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
+  https://github.com/SilverKurali/dsh-mesh-access/releases/latest/download/dsh-mesh-access.tgz
 ```
 
 ## 三、从本地检出装（改代码时用）
 
 ```bash
-git clone https://github.com/SilverKurali/dsh-phone-tunnel
-dsh plugin --profile web add link:"$PWD/dsh-phone-tunnel"
+git clone https://github.com/SilverKurali/dsh-mesh-access
+dsh plugin --profile web add link:"$PWD/dsh-mesh-access"
 ```
 
 `link:` 装的是目录本身。pnpm 会打印一条 peer 依赖解析的警告，`link:` 装法必然出现，
@@ -45,17 +45,17 @@ dsh plugin --profile web add link:"$PWD/dsh-phone-tunnel"
 ## 四、从 git 地址装
 
 ```bash
-dsh plugin --profile web add git+https://github.com/SilverKurali/dsh-phone-tunnel.git
+dsh plugin --profile web add git+https://github.com/SilverKurali/dsh-mesh-access.git
 ```
 
 ## 验证
 
 ```bash
 # 1. profile 里已经有这个插件
-grep -n 'dsh-phone-tunnel' ~/.dsh/profiles/web/package.json
+grep -n 'dsh-mesh-access' ~/.dsh/profiles/web/package.json
 
 # 2. 重启 profile，然后直接问宿主
-curl -s http://127.0.0.1:3080/api/dsh-phone-tunnel/status | head -20
+curl -s http://127.0.0.1:3080/api/dsh-mesh-access/status | head -20
 ```
 
 正常的样子：
@@ -74,13 +74,13 @@ curl -s http://127.0.0.1:3080/api/dsh-phone-tunnel/status | head -20
 ```bash
 curl -s -X POST -H 'content-type: application/json' \
      -d '{"action":"start","port":3081}' \
-     http://127.0.0.1:3080/api/dsh-phone-tunnel/proxy
+     http://127.0.0.1:3080/api/dsh-mesh-access/proxy
 ```
 
 ## 卸载
 
 ```bash
-dsh plugin --profile web remove dsh-phone-tunnel
+dsh plugin --profile web remove dsh-mesh-access
 ```
 
 除了 profile 目录和 `~/.dsh` 之外什么都没写：没有系统服务、没有开机自启、没有防火墙规则。

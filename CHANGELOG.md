@@ -1,5 +1,17 @@
 # 更新日志
 
+## 1.0.0 — 改名（原名 dsh-phone-tunnel）
+
+插件和「手机」没关系：它做的是把组网地址上的请求转给本进程。所以改了名，顺便把定位放宽。
+
+- **包名 / 仓库名**：`dsh-phone-tunnel` → `dsh-mesh-access`（npm 上的旧名已 `deprecate`，仍可按旧名装到最后那版 0.1.5）；
+- 面板文案、「不只手机」章节、npm 描述、市场条目描述都改成「组网里的任何设备」；
+- API 路径 `/api/dsh-phone-tunnel/*` → `/api/dsh-mesh-access/*`；
+- 挂载 id `mesh` → `mesh-access`；
+- 命名空间变了，所以版本从 1.0.0 重新起（不是 0.1.6）。
+
+从 0.1.5 升级：先 `dsh plugin --profile web remove dsh-phone-tunnel`，再 `add dsh-mesh-access@1.0.0`，然后重启 `dsh web`。
+
 ## 0.1.5
 
 - **把定位从「手机」放宽到「组网里的任何设备」**：手机、平板、另一台电脑、带图形界面的 NAS（DSM / QTS / TrueNAS Scale）、电视盒子，只要能连到组网 IP 就能打开，对方设备**不需要装任何东西**；
@@ -35,11 +47,11 @@
 
 ## 0.1.0 — 2026-11-07
 
-第一个版本。已发布到 npm：`dsh-phone-tunnel@0.1.0`。
+第一个版本。已发布到 npm：`dsh-mesh-access@0.1.0`。
 
 - **宿主半边**：组网网卡探测（`192.168.*` 上的 `StarVPN`、`utun*`、`tap*`、`tun*`、`wg*`、`gpd*`、
   `ppp*`、`ipsec*`）、进程内反代并改写 `Host`、WebSocket / upgrade 转发、
-  `GET /api/dsh-phone-tunnel/status`、`POST /api/dsh-phone-tunnel/proxy`。
+  `GET /api/dsh-mesh-access/status`、`POST /api/dsh-mesh-access/proxy`。
 - **客户端半边**：`sidebar.panellist` + `main` 两个槽位的面板（状态、开/关端口、手机地址与复制、
   首次使用星空组网的提示），每 5 秒轮询一次。
 - **没有构建步骤**：两边都是普通的 ESM / 浏览器 JS，所以发布出去的包就是源码本身。

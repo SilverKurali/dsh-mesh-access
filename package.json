@@ -1,6 +1,6 @@
 {
-  "name": "dsh-phone-tunnel",
-  "version": "0.1.5",
+  "name": "dsh-mesh-access",
+  "version": "1.0.0",
   "description": "Expose the DSH web UI on a mesh/VPN interface (StarVPN, Tailscale, WireGuard tun) from inside the running server: in-process reverse proxy + status panel, so any device on the mesh — phone, laptop, NAS — opens it in a browser. No second instance.",
   "type": "module",
   "main": "lib/index.js",
@@ -65,10 +65,10 @@
   "icon": "icon.svg",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SilverKurali/dsh-phone-tunnel.git"
+    "url": "git+https://github.com/SilverKurali/dsh-mesh-access.git"
   },
-  "homepage": "https://github.com/SilverKurali/dsh-phone-tunnel",
+  "homepage": "https://github.com/SilverKurali/dsh-mesh-access#readme",
   "bugs": {
-    "url": "https://github.com/SilverKurali/dsh-phone-tunnel/issues"
+    "url": "https://github.com/SilverKurali/dsh-mesh-access/issues"
   }
 }

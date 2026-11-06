@@ -1,4 +1,4 @@
-# dsh-phone-tunnel
+# dsh-mesh-access
 
 Expose the **running** DeepSeek Harness web UI on a mesh/VPN interface — from inside the server,
 without a second instance, without SSH, without touching the router.
@@ -25,17 +25,17 @@ half-synced state between two servers.
 ## Install
 
 ```bash
-dsh plugin --profile web add dsh-phone-tunnel
+dsh plugin --profile web add dsh-mesh-access
 ```
 
 No npm / behind a China mirror? Use the release tarball:
 
 ```bash
 dsh plugin --profile web add \
-  https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
+  https://github.com/SilverKurali/dsh-mesh-access/releases/latest/download/dsh-mesh-access.tgz
 ```
 
-From a checkout: `dsh plugin --profile web add link:/absolute/path/to/dsh-phone-tunnel`.
+From a checkout: `dsh plugin --profile web add link:/absolute/path/to/dsh-mesh-access`.
 Full matrix (npm / tarball / checkout / git URL), verification and troubleshooting: [INSTALL.en.md](INSTALL.en.md).
 
 Restart the profile. A **组网访问 / Mesh access** entry appears in the left rail:
@@ -52,11 +52,11 @@ Restart the profile. A **组网访问 / Mesh access** entry appears in the left 
 The panel is a view over two routes kept deliberately small:
 
 ```
-GET  /api/dsh-phone-tunnel/status     → { host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
-POST /api/dsh-phone-tunnel/proxy      → {action:'start'|'stop', port?}
+GET  /api/dsh-mesh-access/status     → { host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
+POST /api/dsh-mesh-access/proxy      → {action:'start'|'stop', port?}
 ```
 
-`curl -s localhost:3090/api/dsh-phone-tunnel/status` is enough to debug without a browser.
+`curl -s localhost:3090/api/dsh-mesh-access/status` is enough to debug without a browser.
 
 ## Configuration
 
@@ -64,7 +64,7 @@ Optional, written in the profile's patch layer; every key has a default:
 
 ```yaml
 - id: mesh
-  name: dsh-phone-tunnel
+  name: dsh-mesh-access
   config:
     interfacePattern: '^(StarVPN|utun\d+|tap\d+|tun\d+|wg\d+|gpd\d+|ppp\d+|ipsec\d+)$'
     addressPrefix: '192.168.'
