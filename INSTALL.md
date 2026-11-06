@@ -29,7 +29,7 @@ dsh plugin --profile web add dsh-phone-tunnel
 
 ```bash
 dsh plugin --profile web add \
-  https://github.com/SilverKurali/dsh-phone-tunnel/releases/download/v0.1.0/dsh-phone-tunnel-0.1.0.tgz
+  https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
 ```
 
 ## 三、从本地检出装（改代码时用）

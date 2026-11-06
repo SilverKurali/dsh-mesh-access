@@ -1,5 +1,14 @@
 # 更新日志
 
+## 0.1.1 — 2026-11-07
+
+文档语言调整，功能与 0.1.0 完全一致。
+
+- `README.md`、`INSTALL.md`、`CHANGELOG.md`、`docs/architecture.md` 改为**中文**（这个包主要面向中文用户）；
+  英文原文保留在 `README.en.md`、`INSTALL.en.md`，两个 README 开头互相跳转。
+- 修掉导航行被反引号包住、在 GitHub 上渲染成代码而点不动的问题。
+- 包的 `files` 白名单显式列出四个文档文件；构建产物 `*.tgz` 不再进仓库。
+
 ## 0.1.0 — 2026-11-07
 
 第一个版本。已发布到 npm：`dsh-phone-tunnel@0.1.0`。

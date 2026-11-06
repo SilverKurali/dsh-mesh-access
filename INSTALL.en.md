@@ -28,7 +28,7 @@ Published as `dsh-phone-tunnel@0.1.0` on 2026-11-07.
 
 ```bash
 dsh plugin --profile web add \
-  https://github.com/SilverKurali/dsh-phone-tunnel/releases/download/v0.1.0/dsh-phone-tunnel-0.1.0.tgz
+  https://github.com/SilverKurali/dsh-phone-tunnel/releases/latest/download/dsh-phone-tunnel.tgz
 ```
 
 ## From a local checkout
