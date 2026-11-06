@@ -1,6 +1,6 @@
 # Install
 
-`[English](INSTALL.en.md) | [中文](INSTALL.md)`
+[English](INSTALL.en.md) | [中文](INSTALL.md)
 
 ## Requirement
 

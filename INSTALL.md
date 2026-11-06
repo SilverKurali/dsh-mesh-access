@@ -1,6 +1,6 @@
 # 安装
 
-`[中文](INSTALL.md) | [English](INSTALL.en.md)`
+[中文](INSTALL.md) | [English](INSTALL.en.md)
 
 ## 前置条件
 

@@ -3,7 +3,7 @@
 Expose the **running** DeepSeek Harness web UI on a mesh/VPN interface — from inside the server,
 without a second instance, without SSH, without touching the router.
 
-`[English](#what-it-does) | [中文](README.md)`
+[English](#what-it-does) | [中文](README.md)
 
 ## What it does
 

@@ -3,7 +3,7 @@
 把**正在运行**的 DeepSeek Harness 网页界面挂到组网网卡上 —— 在服务进程内部完成，
 不需要第二个实例，不需要 SSH，也不用碰路由器。
 
-`[中文](#它做什么) | [English](README.en.md)`
+[中文](#它做什么) | [English](README.en.md)
 
 ## 它做什么
 
