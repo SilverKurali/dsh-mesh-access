@@ -5,6 +5,8 @@ without a second instance, without SSH, without touching the router.
 
 [English](#what-it-does) | [中文](README.md)
 
+![The “组网访问” (mesh access) panel in the sidebar](assets/screenshot-1.png)
+
 ## What it does
 
 `dsh web --host` binds exactly one concrete interface address, and it rejects wildcards. So a
