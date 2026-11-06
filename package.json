@@ -1,6 +1,6 @@
 {
   "name": "dsh-mesh-access",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Expose the DSH web UI on a mesh/VPN interface (StarVPN, Tailscale, WireGuard tun) from inside the running server: in-process reverse proxy + status panel, so any device on the mesh — phone, laptop, NAS — opens it in a browser. No second instance.",
   "type": "module",
   "main": "lib/index.js",

@@ -1,5 +1,13 @@
 # 更新日志
 
+## 1.0.1 — 修「一直重新连接中」
+
+`Origin` 没有跟着 `Host` 一起改写，DSH 的 WebSocket 升级被自己的同源校验挡成 **403**，
+于是 HTTP 一切正常（页面能开、API 能通），但实时通道连不上，界面底部一直显示「重新连接中…」。这一版修掉它，并顺手把长连接的 TCP keepalive 打开。
+
+- `rewrite()` 在改写 `Host` 的同时改写 `Origin`（`http://<upstream>`）；
+- upgrade 路径两个 socket 都 `setNoDelay(true)` + `setKeepAlive(true, 30000)`，让中继上的空闲长连接不容易被悄悄丢掉。
+
 ## 1.0.0 — 改名（原名 dsh-phone-tunnel）
 
 插件和「手机」没关系：它做的是把组网地址上的请求转给本进程。所以改了名，顺便把定位放宽。
