@@ -1,6 +1,6 @@
 {
   "name": "dsh-phone-tunnel",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Expose the DSH web UI on a mesh/VPN interface (StarVPN, Tailscale, WireGuard tun) from inside the running server: in-process reverse proxy, live status panel, no second instance.",
   "type": "module",
   "main": "lib/index.js",
