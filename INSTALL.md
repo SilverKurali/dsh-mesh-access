@@ -14,7 +14,7 @@
 dsh plugin --profile web add dsh-phone-tunnel
 ```
 
-已于 2026-11-07 发布：`dsh-phone-tunnel@0.1.0`。
+最新版：`dsh-phone-tunnel@0.1.3`（2026-11-07 发布）。
 
 > **国内镜像的坑**：如果你的 npm 指向 `registry.npmmirror.com`，镜像可能只同步了一半元数据，
 > pnpm 会报
@@ -22,7 +22,7 @@ dsh plugin --profile web add dsh-phone-tunnel
 > 这时显式给官方源：
 >
 > ```bash
-> dsh plugin --profile web add dsh-phone-tunnel@0.1.0 --registry=https://registry.npmjs.org
+> dsh plugin --profile web add dsh-phone-tunnel@0.1.3 --registry=https://registry.npmjs.org
 > ```
 
 ## 二、从 Release 的 tgz 装（不需要 npm 账号，任何镜像都行）

@@ -14,14 +14,14 @@
 dsh plugin --profile web add dsh-phone-tunnel
 ```
 
-Published as `dsh-phone-tunnel@0.1.0` on 2026-11-07.
+Current: `dsh-phone-tunnel@0.1.3` (published 2026-11-07).
 
 > If your machine points npm at a China mirror (`registry.npmmirror.com`), the mirror can lag
 > behind or serve a partially synced record, and pnpm then fails with
 > `numeric field was not a number: when getting size for package`. Add the registry explicitly:
 >
 > ```bash
-> dsh plugin --profile web add dsh-phone-tunnel@0.1.0 --registry=https://registry.npmjs.org
+> dsh plugin --profile web add dsh-phone-tunnel@0.1.3 --registry=https://registry.npmjs.org
 > ```
 
 ## From the release tarball (no npm account, any registry)
