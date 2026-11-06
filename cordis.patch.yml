@@ -1,0 +1,8 @@
+# dsh-plugin-mesh — bundle patch
+#
+# Mounts the mesh-access plugin into the web profile. Install with:
+#   dsh plugin --profile web add dsh-plugin-mesh
+#   dsh plugin --profile web add link:/absolute/path/to/dsh-plugin-mesh   # local dev
+- insert:
+    - id: mesh
+      name: dsh-plugin-mesh

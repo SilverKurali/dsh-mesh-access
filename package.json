@@ -1,0 +1,69 @@
+{
+  "name": "dsh-plugin-mesh",
+  "version": "0.1.0",
+  "description": "Expose the DSH web UI on a mesh/VPN interface (StarVPN, Tailscale, WireGuard tun) from inside the running server: in-process reverse proxy, live status panel, no second instance.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "INSTALL.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh": ">=0.2.1-rc.2"
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.1-rc.2"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ],
+      "platform": "web"
+    }
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "mesh",
+    "vpn",
+    "starvpn",
+    "tailscale",
+    "wireguard",
+    "remote-access",
+    "reverse-proxy"
+  ],
+  "license": "MIT",
+  "icon": "icon.svg",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilverKurali/dsh-plugin-mesh.git"
+  },
+  "homepage": "https://github.com/SilverKurali/dsh-plugin-mesh",
+  "bugs": {
+    "url": "https://github.com/SilverKurali/dsh-plugin-mesh/issues"
+  }
+}
