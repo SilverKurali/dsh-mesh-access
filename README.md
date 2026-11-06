@@ -23,6 +23,12 @@ half-synced state between two servers.
 ## Install
 
 ```bash
+dsh plugin --profile web add dsh-phone-tunnel
+```
+
+No npm? Use the release tarball instead / 不方便用 npm 就用 Release 里的 tgz：
+
+```bash
 dsh plugin --profile web add \
   https://github.com/SilverKurali/dsh-phone-tunnel/releases/download/v0.1.0/dsh-phone-tunnel-0.1.0.tgz
 ```

@@ -2,7 +2,7 @@
 
 ## 0.1.0 — 2026-11-07
 
-First release.
+First release. Published to npm as `dsh-phone-tunnel@0.1.0`.
 
 - Host half: mesh interface discovery (`StarVPN`, `utun*`, `tap*`, `tun*`, `wg*`, `gpd*`, `ppp*`,
   `ipsec*` on `192.168.*`), in-process reverse proxy with `Host` rewrite, WebSocket/upgrade

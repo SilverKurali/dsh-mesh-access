@@ -6,20 +6,28 @@
 - Node `>= 22` (whatever DSH already runs on)
 - An initialized `web` profile (`~/.dsh/profiles/web` exists — DSH creates it on first `dsh web`)
 
-## From the release tarball (recommended — no npm account needed)
+## From npm (one line)
+
+```bash
+dsh plugin --profile web add dsh-phone-tunnel
+```
+
+Published as `dsh-phone-tunnel@0.1.0` on 2026-11-07.
+
+> If your machine points npm at a China mirror (`registry.npmmirror.com`), the mirror can lag
+> behind or serve a partially synced record, and pnpm then fails with
+> `numeric field was not a number: when getting size for package`. Add the registry explicitly:
+>
+> ```bash
+> dsh plugin --profile web add dsh-phone-tunnel@0.1.0 --registry=https://registry.npmjs.org
+> ```
+
+## From the release tarball (no npm account, any registry)
 
 ```bash
 dsh plugin --profile web add \
   https://github.com/SilverKurali/dsh-phone-tunnel/releases/download/v0.1.0/dsh-phone-tunnel-0.1.0.tgz
 ```
-
-The tarball is built from the same tree, so it installs identically to the npm route.
-
-## From npm
-
-Not published yet — the registry account is still being set up. Use one of the
-other two routes for now; this section will be filled in when `dsh-phone-tunnel`
-goes live on npm.
 
 ## From a local checkout
 
