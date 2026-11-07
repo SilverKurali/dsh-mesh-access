@@ -52,6 +52,18 @@ Restart the profile. A **组网访问 / Mesh access** entry appears in the left 
 | Public tunnel (optional) | use **your own** server as a public entry point: start/stop frpc, show the public URL, probe it for real |
 | 第一次用星空组网？ | the referral sign-up link and the member-account rule |
 
+## Entry auth (since 1.4.0)
+
+The lock on the public entry now lives in the plugin panel — the server needs zero auth config:
+
+| Mode | Experience | For |
+| --- | --- | --- |
+| Key (recommended) | One-time URL from the panel; that device stays signed in for 30 days, no popup ever | Your own devices |
+| Password | Browser popup once; that device stays signed in for 24 h | Borrowed devices |
+| Off | No lock (only DSH's own token) | Not recommended |
+
+Reset the key any time — the old key dies instantly. Changing the password kicks every signed-in device. In key mode, unauthorized requests get a plain 404.
+
 ## HTTP surface
 
 The panel is a view over two routes kept deliberately small:

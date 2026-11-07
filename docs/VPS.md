@@ -53,7 +53,7 @@ sudo ./tools/frps-setup.sh --port 7000 --http-port 21081
 2. 写 `/etc/frp/frps.toml`：`bindPort`、`auth.token`（没给就随机生成 24 位）、日志、本机管理面板 `127.0.0.1:7500`
 3. 建 `frps.service` 并 enable + start，核对 `:7000` 真的在听
 4. firewalld / ufw 有就放行 7000
-5. 给了 `--domain` 且有 nginx：写 ACME 探针、申请 Let's Encrypt 证书、写 443 反代、加 Basic 认证（随机密码）
+5. 给了 `--domain` 且有 nginx：写 ACME 探针、申请 Let's Encrypt 证书、写 443 反代（认证由插件面板「入口登录」接管，服务器不再配账密）
 
 `tools/frpc-setup.sh`（你的电脑上，普通用户）：
 
@@ -66,8 +66,10 @@ sudo ./tools/frps-setup.sh --port 7000 --http-port 21081
 ## 认证是两层
 
 1. **DSH 自己的 token**：面板里「访问地址」那一行就是带 `?token=` 的完整地址，换完 cookie 30 天有效。
-2. **你加的入口认证**（推荐）：`frps-setup.sh --domain` 会顺手配好 nginx Basic 认证，浏览器打开先弹账号密码框。
-   不用 Basic 也可以只暴露 IP:端口——但那样等于把 DSH 登录页直接挂在公网，靠 token 一层兜底。
+2. **入口认证**（推荐，1.4.0+）：装好插件后，在面板「入口登录」卡片里选模式：
+   - 密钥（推荐）：面板给出带 `?meshkey=` 的一次性地址，手机打开一次，30 天内免登录、无弹窗；可随时重置。
+   - 账号密码：浏览器弹窗登录一次，24 小时内仅该设备免登录；改密码会踢掉所有已登录设备。
+   认证状态存本机侧车文件，服务器零配置。
 
 想更硬一点：把 nginx 换成 mTLS（客户端证书）或者只允许公司 IP 访问（`allow`/`deny`），这些都在 nginx 那一层做，
 插件不用改。

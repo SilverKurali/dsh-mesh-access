@@ -75,6 +75,21 @@ sudo ./tools/frps-setup.sh --port 7000 --http-port 21081
 完整说明（前置条件、域名/TLS/Basic 认证、故障表、卸载）见 **[docs/VPS.md](docs/VPS.md)**。
 想让 AI 帮你配：把 **[docs/AI-SETUP.md](docs/AI-SETUP.md)** 整份丢给它，它就知道该跑什么、怎么验证。
 
+## 入口登录（1.4.0 起）
+
+公网地址的门锁做在**插件面板**里（「入口登录」卡片），服务器零配置——nginx 不再需要账密：
+
+| 模式 | 体验 | 适合 |
+| --- | --- | --- |
+| 密钥（推荐） | 面板给一次性地址，手机打开一次，**30 天内免登录、全程无弹窗** | 自己的设备 |
+| 账号密码 | 浏览器弹窗登录一次，**24 小时内仅该设备免登录**，其他设备各自登录 | 偶尔借别人设备 |
+| 关闭 | 不加门锁（只剩 DSH 自己的 token 一层） | 不推荐 |
+
+- 密钥怀疑泄露 → 面板点「重置」，旧密钥立即作废，所有设备重新认证。
+- 改账号密码 → 所有已登录设备立刻下线。
+- 密钥模式下无效请求一律返回 404，不暴露这里有个服务。
+- 认证状态存本机 `~/.config/frp/dsh-mesh-access.json`（侧车文件），密码 scrypt 哈希存储。
+
 ## HTTP 接口
 
 面板只是两个接口的外壳，故意做得极小：
@@ -82,6 +97,8 @@ sudo ./tools/frps-setup.sh --port 7000 --http-port 21081
 ```
 GET  /api/dsh-mesh-access/status   → { ok, host:{upstream,port}, interfaces[], mesh[], proxy{...}, referral }
 POST /api/dsh-mesh-access/proxy    → { action:'start' | 'stop', port? }
+GET  /api/dsh-mesh-access/tunnel   → frpc 隧道状态（1.1.0+）
+GET  /api/dsh-mesh-access/auth     → 入口登录状态；POST 切换模式 / 改账密 / 重置密钥（1.4.0+）
 ```
 
 不开浏览器也能排查：
