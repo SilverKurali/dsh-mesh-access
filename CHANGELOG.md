@@ -157,3 +157,10 @@
 - 拿不到有效凭据的请求一律 404 伪装（密钥模式）/ 401 弹窗（账号密码模式），WebSocket 升级同样先过门锁。
 - `x-forwarded-proto` 透传：https 域名下种 cookie 自动带 `Secure`。
 - frps-setup.sh 不再生成 nginx Basic 账密（认证归插件）。
+
+## 1.4.1 — 修复面板空白
+
+- 1.4.0 的 client.js 使用了未声明的 `authMsg` state（补插卡片脚本失败遗留），
+  渲染「入口登录」卡片即抛 `ReferenceError`，导致整个「组网访问」面板空白。
+  已补上 `const [authMsg, setAuthMsg] = react.useState('')`，
+  三种模式（密钥/账号密码/关闭）各完成组件树渲染冒烟验证。
