@@ -164,3 +164,7 @@
   渲染「入口登录」卡片即抛 `ReferenceError`，导致整个「组网访问」面板空白。
   已补上 `const [authMsg, setAuthMsg] = react.useState('')`，
   三种模式（密钥/账号密码/关闭）各完成组件树渲染冒烟验证。
+
+## 1.4.2 — 面板支持滚动
+
+- 面板根容器加 `height:100%; overflowY:auto`：内容超出可视区时可用滚轮上下滑。
