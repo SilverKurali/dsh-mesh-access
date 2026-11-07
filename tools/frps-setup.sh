@@ -175,8 +175,8 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
 
     # 浏览器弹窗式登录：挡掉所有没带账号密码的请求
-    auth_basic "DSH";
-    auth_basic_user_file /etc/nginx/.dsh_htpasswd;
+    # auth_basic 已由 dsh-mesh-access 插件面板接管（1.4.0+），服务器只做转发
+    # 认证配置见插件面板「入口登录」
 
     client_max_body_size 64m;
 
