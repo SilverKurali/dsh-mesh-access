@@ -92,12 +92,45 @@ Corollary: change the mesh IP or the port and you must open a fresh token URL on
 
 ## Limitations
 
-- It cannot move *its own* server's listener; a plugin runs inside a process that is already
-  listening. The mesh port is a proxy, not a second bind of the primary server.
-- Only IPv4 mesh addresses are considered.
-- Still requires the phone to reach the mesh address — the tunnel's own quality applies. On
-  StarVPN's relay path expect ~0.4 MB/s and occasional multi-second RTT spikes, which can stall a
-  long streaming answer; reload resumes it.
+- The plugin cannot move **its own process's** listen address. The mesh port is a reverse proxy, not a second bind.
+- IPv4 mesh addresses only.
+- One `~/.dsh` still admits only one task-board lock holder; that is deliberate, and this plugin exists to avoid needing a second instance.
+
+## Performance and limits (measured)
+
+Whether this feels good depends on **how the mesh picks a path**, not on the plugin. Numbers below were measured
+on 2026-11-07 on a real link, so you can tell "is it the plugin?" — almost always it is not.
+
+| Path | One-way latency | Note |
+|---|---|---|
+| Same LAN (`10.x.y.z:3081`) | **1–3 ms** | direct, feels local |
+| Mesh direct (`path=P2P`) | 30–80 ms | best case, needs both sides hole-punchable |
+| Mesh UDP relay | 60–150 ms | workable |
+| Mesh **TCP relay** (`path=SN-TCP`) | **840–990 ms**, worst seen 3.7 s | painful, see below |
+
+The TCP relay is TCP inside TCP: one lost packet stalls the whole ordered stream, so latency is amplified ~10×.
+Worse, a phone on carrier-grade NAT keeps changing its address; the client then isolates the P2P link and falls back:
+
+```
+[P2P] isolated the old direct link, waiting for a new P2P confirmation; policy picks Mesh/Supernode
+[SN-RTT] Supernode round trip is slow: ... rtt=891ms path=SN-TCP
+```
+
+On such a link the DSH realtime channel's heartbeat times out periodically, which the UI shows as
+an endless **"reconnecting…"** banner. The plugin already removes two of the amplifiers:
+
+1. **rewrites `Origin`** — otherwise the WebSocket upgrade is rejected by DSH's own origin check with 403 and never connects;
+2. **adds `immutable` caching for `/assets/*`** — upstream sends no cache headers at all, so every reload used to re-transfer ~2.4 MB.
+
+Heartbeat timeouts themselves are not fixable in the plugin. Check the server side first:
+
+```bash
+grep -E 'SN-RTT|path=SN-TCP|peer-info-address-changed' /usr/local/lib/stars/res/stars.log | tail
+```
+
+- `path=SN-TCP` with `rtt` stuck above 800 ms → change the link, not the plugin;
+- for dependable remote access, put a VPS (ideally in the same country) in front and let the PC dial out to it,
+  instead of relying on a mesh where both peers sit behind NAT and can only relay.
 
 ## Not just phones
 
