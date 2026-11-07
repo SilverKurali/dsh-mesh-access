@@ -7,6 +7,13 @@
 
 [中文](#它做什么) | [English](README.en.md)
 
+[![npm 版本](https://img.shields.io/npm/v/dsh-mesh-access?label=npm&logo=npm)](https://www.npmjs.com/package/dsh-mesh-access)
+[![周下载量](https://img.shields.io/npm/dw/dsh-mesh-access?label=%E5%91%A8%E4%B8%8B%E8%BD%BD)](https://www.npmjs.com/package/dsh-mesh-access)
+[![License](https://img.shields.io/npm/l/dsh-mesh-access)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/SilverKurali/dsh-mesh-access?label=Release&logo=github)](https://github.com/SilverKurali/dsh-mesh-access/releases)
+[![平台](https://img.shields.io/badge/platform-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-888)](#)
+[![DSH 插件](https://img.shields.io/badge/DSH-%E6%8F%92%E4%BB%B6-blueviolet)](https://www.npmjs.com/package/dsh-mesh-access)
+
 ![侧边栏里的「组网访问」面板](assets/screenshot-1.png)
 
 ## 它做什么

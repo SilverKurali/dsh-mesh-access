@@ -9,6 +9,14 @@ inside the server process.
 
 [English](#what-it-does) | [中文](README.md)
 
+[![npm](https://img.shields.io/npm/v/dsh-mesh-access?label=npm&logo=npm)](https://www.npmjs.com/package/dsh-mesh-access)
+[![weekly downloads](https://img.shields.io/npm/dw/dsh-mesh-access)](https://www.npmjs.com/package/dsh-mesh-access)
+[![License](https://img.shields.io/npm/l/dsh-mesh-access)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/SilverKurali/dsh-mesh-access?label=Release&logo=github)](https://github.com/SilverKurali/dsh-mesh-access/releases)
+[![platform](https://img.shields.io/badge/platform-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-888)](#)
+[![DSH plugin](https://img.shields.io/badge/DSH-plugin-blueviolet)](https://www.npmjs.com/package/dsh-mesh-access)
+
+
 ![The “组网访问” (mesh access) panel in the sidebar](assets/screenshot-1.png)
 
 ## What it does
