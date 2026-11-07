@@ -215,3 +215,9 @@
 - 新增「远程卡顿？临时停用 billion-context」卡片：一键写入/移除 profile 的
   cordis.patch.yml 停用补丁（带标记，恢复时精确删除），并结束现存守护进程。
 - 适用场景：组网/远程连接卡顿时减负；重启 dsh web 后彻底不加载，随时可恢复。
+
+## 1.5.5 — billion-context 卡片改为纯指引
+
+- 移除插件内直接停用/恢复 billion-context 的按钮（避免替用户改 profile 配置）。
+- 改为提示卡：说明卡顿原因与守护数量，指引用户去插件管理/商店自行关闭
+  （附 dsh plugin --profile web remove billion-context 命令）。
