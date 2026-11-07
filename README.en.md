@@ -49,6 +49,7 @@ Restart the profile. A **组网访问 / Mesh access** entry appears in the left 
 | 当前状态 | proxy state, DSH's own listen port, how many mesh interfaces were found |
 | 动作 | open the mesh port / close it / refresh |
 | 手机地址 | the URL to open on the phone, with a copy button |
+| Public tunnel (optional) | use **your own** server as a public entry point: start/stop frpc, show the public URL, probe it for real |
 | 第一次用星空组网？ | the referral sign-up link and the member-account rule |
 
 ## HTTP surface
@@ -141,6 +142,30 @@ mesh works — a phone or tablet, another Windows/macOS/Linux laptop, a NAS with
 
 Requirements are only: same mesh, a route to the mesh IP, and a browser. **Nothing** has to be
 installed on the other device, and no SSH is involved.
+
+## Use your own server (optional)
+
+The mesh path is fine on a LAN or a P2P link, but it can fall back to a public relay: measured RTT 800-990 ms (worst
+3.7 s), and long-lived connections get dropped by heartbeat timeouts — on a phone that looks like a page stuck on
+"reconnecting". If you have your own server with a public IP, point the tunnel at it: usually 30-60 ms.
+
+**We do not provide a server, and you do not use somebody else's.** It is your box, your credentials. Two scripts ship
+in this repo:
+
+```bash
+# 1) on your server (root): install frps
+sudo ./tools/frps-setup.sh --port 7000 --http-port 21081
+#    with HTTPS: add --domain dsh.example.com --email you@example.com
+
+# 2) on the machine running DSH: install frpc and point it at that server
+./tools/frpc-setup.sh --server <server-ip> --token <token printed in step 1> --remote-port 21081
+```
+
+Then open "组网访问" → "公网隧道" → start. Step 1 prints the token and the exact step-2 command for you.
+The cloud security group must allow **7000/tcp** and **21081/tcp** — only you can do that.
+
+Full guide (prerequisites, domain/TLS/Basic auth, troubleshooting, uninstall): **[docs/VPS.md](docs/VPS.md)**.
+To let an AI do the setup, hand it **[docs/AI-SETUP.md](docs/AI-SETUP.md)**.
 
 ## Companion
 

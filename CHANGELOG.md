@@ -1,5 +1,20 @@
 # 更新日志
 
+## 1.1.0 — 把「自己的 VPS 隧道」做进面板
+
+组网这条路在某些网络下注定要中继（校园网只能一台设备在线、手机蜂窝 CGNAT），TCP 中继 RTT 800–990 ms，长连接撑不住。所以面板多了一张「公网隧道」卡片，用你自己的服务器 + frp 走第二条路：
+
+- 新增 `GET/POST /api/dsh-mesh-access/tunnel`：读 `~/.config/frp/frpc.toml`（`serverAddr` / `serverPort` / `localPort` / `remotePort`），面板显示公网地址与连通性；
+- 「启动隧道」在本进程内 `spawn frpc -c frpc.toml`，等到 `start proxy success` 才算成功（8 秒超时，失败把 frpc 的日志贴到面板上）；
+- 「公网可达」是**真连一次**面板域名/端口再判断，不是看进程在不在；
+- 新增配置 `frpcBin` / `frpcConfig` / `tunnelDomain`（有域名就走 `https://域名/`，没有就退回 `http://IP:remotePort/`）；
+- 新增 `tools/frps-setup.sh`：在你**自己的**服务器上一把装好 frps（systemd、随机 token、防火墙、可选 nginx + Let's Encrypt + Basic 认证），结尾打印本机要用的命令；
+- 新增 `tools/frpc-setup.sh`：在本机装 frpc、写 `frpc.toml`、写（不 enable）用户单元，缺参数时交互提问；
+- 新增 `docs/VPS.md`（给人看）与 `docs/AI-SETUP.md`（给 AI 执行：硬规则、运行顺序、四条验证、故障表）；
+- 面板文案改成「用你自己的服务器」，并在检测到公网可达但 frpc 不是本进程拉起时禁用启动按钮（避免两个 frpc 抢同一个 remotePort）。
+
+配套：`README` 增「用你自己的服务器（可选）」，`docker`/`systemd` 不是必需项。
+
 ## 1.0.4 — 把「性能与限制」写清楚
 
 功能不变。补了一节实测表格与判断方法，用来回答「卡是不是插件的问题」：
