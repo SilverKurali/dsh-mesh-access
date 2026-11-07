@@ -221,3 +221,7 @@
 - 移除插件内直接停用/恢复 billion-context 的按钮（避免替用户改 profile 配置）。
 - 改为提示卡：说明卡顿原因与守护数量，指引用户去插件管理/商店自行关闭
   （附 dsh plugin --profile web remove billion-context 命令）。
+
+## 1.5.6 — README 加徽章
+
+- npm/GitHub 页面顶部加六个徽章（版本 / 周下载 / License / Release / 平台 / DSH 插件）。
