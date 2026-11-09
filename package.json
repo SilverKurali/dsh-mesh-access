@@ -1,6 +1,6 @@
 {
   "name": "dsh-mesh-access",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "Control your DSH from your phone: opens a port on the mesh/VPN interface from inside the running server process, so a phone browser gets the same instance and the same session list — no SSH, no second dsh. Also reachable from another PC, a GUI NAS, or a TV box.",
   "type": "module",
   "main": "lib/index.js",

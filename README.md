@@ -13,6 +13,9 @@
 [![GitHub Release](https://img.shields.io/github/v/release/SilverKurali/dsh-mesh-access?label=Release&logo=github)](https://github.com/SilverKurali/dsh-mesh-access/releases)
 [![平台](https://img.shields.io/badge/platform-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-888)](#)
 [![DSH 插件](https://img.shields.io/badge/DSH-%E6%8F%92%E4%BB%B6-blueviolet)](https://www.npmjs.com/package/dsh-mesh-access)
+[![插件商店](https://img.shields.io/badge/%E6%8F%92%E4%BB%B6%E5%95%86%E5%BA%97-%E5%B7%B2%E4%B8%8A%E6%9E%B6-brightgreen)](https://awesome-dsh-plugin.com/p/SilverKurali/dsh-mesh-access/)
+
+> **插件商店直达**：<https://awesome-dsh-plugin.com/p/SilverKurali/dsh-mesh-access/>
 
 ![侧边栏里的「组网访问」面板](assets/screenshot-1.png)
 
@@ -58,7 +61,14 @@ dsh plugin --profile web add link:/绝对路径/dsh-mesh-access
 | 动作 | 在组网地址上开端口 / 关闭 / 刷新 |
 | 访问地址 | 给组网内任何设备打开的地址（带 token，可直接复制） |
 | 公网隧道（可选） | 用**你自己的**服务器做公网入口：启停 frpc、显示公网地址、真实探测是否可达 |
+| 入口登录（门锁） | 公网入口的三模式认证：密钥 / 账号密码 / 关闭 |
+| 远程卡顿？ | 提示 billion-context 的开销，指引去插件管理里关掉 |
 | 第一次用星空组网？ | 邀请注册链接 + 成员账号规则 |
+
+**重启后自动恢复**：面板开过的组网端口和公网隧道都会记在侧车里，`dsh web` 重启、机器重启、断电恢复之后
+插件自己把两样都开回来（5 秒轮询，最多 5/10 分钟等网卡和上游就绪）；只有你从面板手动点「关闭 / 停止」才会清除这份记忆。
+另外 `dsh-frpc.service` 可以 `systemctl --user enable --now dsh-frpc` + `loginctl enable-linger`，
+让 frpc 开机就起，完全不依赖 `dsh web` 是否在跑（插件检测到外部 frpc 会主动让路，不抢端口）。
 
 ## 用你自己的服务器（可选）
 

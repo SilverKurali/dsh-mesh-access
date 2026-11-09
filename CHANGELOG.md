@@ -244,3 +244,11 @@
   现在只有用户手动点「停止」才清记忆（`stopTunnel(false)` 用于进程退出）。
 - 另外：`dsh-frpc.service` 已在本机 `systemctl --user enable` 且 `loginctl enable-linger` 已开，
   frpc 现在开机自启，不依赖 dsh web 是否在跑（插件检测到外部 frpc 会主动让路）。
+
+## 1.5.9 — 文档：商店直达 + 重启后自动恢复说明
+
+- README 顶部加「插件商店 已上架」徽章与直达链接（awesome-dsh-plugin.com 详情页）。
+- 面板功能表补全「入口登录（门锁）」「远程卡顿？」两行。
+- 新增「重启后自动恢复」一段：说明组网端口/公网隧道都会记在侧车并自动恢复，
+  以及 `dsh-frpc.service` + `loginctl enable-linger` 让 frpc 开机自启的做法。
+- 纯文档改动，代码无变化。

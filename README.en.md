@@ -15,6 +15,9 @@ inside the server process.
 [![GitHub Release](https://img.shields.io/github/v/release/SilverKurali/dsh-mesh-access?label=Release&logo=github)](https://github.com/SilverKurali/dsh-mesh-access/releases)
 [![platform](https://img.shields.io/badge/platform-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-888)](#)
 [![DSH plugin](https://img.shields.io/badge/DSH-plugin-blueviolet)](https://www.npmjs.com/package/dsh-mesh-access)
+[![Plugin store](https://img.shields.io/badge/plugin%20store-listed-brightgreen)](https://awesome-dsh-plugin.com/p/SilverKurali/dsh-mesh-access/)
+
+> **In the plugin store**: <https://awesome-dsh-plugin.com/p/SilverKurali/dsh-mesh-access/>
 
 
 ![The “组网访问” (mesh access) panel in the sidebar](assets/screenshot-1.png)
