@@ -237,3 +237,10 @@
   下次 dsh web 起来后轮询（5 秒一次，最多 10 分钟）自动拉起隧道；
   若检测到已有 frpc 进程（systemd 用户单元）在跑则不抢；用户手动点「停止」才清除记忆。
 - 效果：断电/重启/升级 dsh web 之后，手机那条链接自己回来，不再需要点任何按钮。
+
+## 1.5.8 — 同款 bug 也出现在隧道上
+
+- 进程退出时 `stopTunnel()` 会把「上次隧道是开着的」写成 false，导致 1.5.7 的隧道自动恢复同样失效。
+  现在只有用户手动点「停止」才清记忆（`stopTunnel(false)` 用于进程退出）。
+- 另外：`dsh-frpc.service` 已在本机 `systemctl --user enable` 且 `loginctl enable-linger` 已开，
+  frpc 现在开机自启，不依赖 dsh web 是否在跑（插件检测到外部 frpc 会主动让路）。
